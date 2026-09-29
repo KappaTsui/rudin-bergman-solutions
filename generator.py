@@ -10,7 +10,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parent
 MAIN = ROOT / "main.tex"
-TEMPLATE = ROOT / "templates" / "solution.tex"
+TEMPLATES = ROOT / "templates"
 
 # Explicit suffixes keep deletion from removing unrelated files with the same stem.
 LATEX_OUTPUT_SUFFIXES = (
@@ -152,6 +152,8 @@ def generate_main():
         r"\usepackage{geometry}",
         r"\geometry{margin=1in}",
         "",
+        r"\newtheorem{lemma}{Lemma}",
+        "",
         r"\newcommand{\R}{\mathbb{R}}",
         r"\newcommand{\Q}{\mathbb{Q}}",
         r"\newcommand{\C}{\mathbb{C}}",
@@ -216,6 +218,7 @@ def create_solution(
     exercise: str,
     part: str,
     compile_after: bool = False,
+    template_file: str = "solution.tex",
 ):
     """
     Examples:
@@ -266,10 +269,14 @@ def create_solution(
     else:
         description = f"Exercise {section}:{exercise}({part})"
 
+    template_path = Path(template_file)
+    if not template_path.is_absolute():
+        template_path = TEMPLATES / template_path
+
     try:
-        template = TEMPLATE.read_text(encoding="utf-8")
+        template = template_path.read_text(encoding="utf-8")
     except (OSError, UnicodeError) as exc:
-        print(f"error: cannot read solution template {TEMPLATE}: {exc}", file=sys.stderr)
+        print(f"error: cannot read solution template {template_path}: {exc}", file=sys.stderr)
         sys.exit(1)
 
     contents = template.replace("@@MAIN_TEX@@", relative_main).replace(
@@ -459,6 +466,13 @@ def main():
         help="Compile the newly created file immediately",
     )
 
+    new.add_argument(
+        "--template",
+        metavar="FILE",
+        default="solution.tex",
+        help="Template path relative to templates/ or an absolute path (default: solution.tex)",
+    )
+
     # delete
     delete = subparsers.add_parser(
         "delete",
@@ -483,6 +497,7 @@ def main():
             exercise=args.exercise,
             part=args.part,
             compile_after=args.compile,
+            template_file=args.template,
         )
 
     elif args.command == "delete":
