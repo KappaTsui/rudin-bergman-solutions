@@ -1,0 +1,40 @@
+# LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex*
+
+# Bibliography and index output
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.idx
+*.ind
+*.ilg
+
+# Glossary and presentation auxiliary files
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.nav
+*.snm
+*.vrb
+
+# Compiled documents
+*.pdf
+*.dvi
+*.xdv
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
