@@ -30,6 +30,8 @@
 *.vrb
 
 # Compiled documents
+/build/
+output/
 *.pdf
 *.dvi
 *.xdv
@@ -38,3 +40,5 @@
 __pycache__/
 *.pyc
 *.pyo
+
+main.tex
