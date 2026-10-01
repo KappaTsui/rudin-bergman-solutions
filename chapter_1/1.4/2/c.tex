@@ -1,0 +1,33 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{document}
+% Exercise 1.4:2(c)
+
+Bergman suggested showing that $m_0 + 1$ is an upper bound of $\left\{\sum_{i=0}^{k} m_i10^{-i} \middle| k \geq 0 \right\}$ for this part, we might as well go for $\sum_{i=0}^{s} m_i 10^{-i} + 10^{-s}$ for any $s$ is an upper bound of this set.
+
+\begin{proof}
+	Fix any $s$, if $k \leq s$, it's easy to see that
+	\[ 
+		\sum_{i=0}^{s} m_i 10^{-i} + 10^{-s} \geq \sum_{i=0}^{k} m_i10^{-i},
+	 \]
+	since the additional terms between the $k$-th and $s$-th partial sums are nonnegative.
+
+	If $k > s$, then
+	\[
+		\begin{aligned}
+		\sum_{i=0}^{s} m_i 10^{-i} + 10^{-s}
+		- \sum_{i=0}^{k} m_i 10^{-i}
+		&= 10^{-s} - \sum_{i=s+1}^{k} m_i 10^{-i} \\
+		&\geq 10^{-(s+1)} - \sum_{i=s+2}^{k} m_i 10^{-i} \\
+		&\geq \cdots \\
+		&\geq 10^{-k} \\
+		&> 0.
+		\end{aligned}
+	\]
+	In either case, we see that $\sum_{i=0}^{s} m_i 10^{-i} + 10^{-s}$ is an upper bound of $\left\{\sum_{i=0}^{k} m_i10^{-i} \middle| k \geq 0 \right\}$.
+
+
+\end{proof}
+
+
+\end{document}

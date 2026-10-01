@@ -1,0 +1,92 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{document}
+% Exercise 1.4:2(d)
+
+I would change the hypothesis of the exercise from saying that there are
+infinitely many $k$ such that $n_k\neq 9$ to saying that there are
+infinitely many $k$ such that $m_k\neq 9$.
+
+The reason for this change is that the statement as written is false.
+For example, consider
+\[
+m_0=1,\qquad m_k=9\qquad (k\geq 1).
+\]
+Then
+\[
+\sum_{i=0}^k m_i10^{-i}=2-10^{-k},
+\]
+so the supremum of these partial sums is $x=2$. Applying Rudin's
+construction to $x$ gives
+\[
+n_0=2,\qquad n_k=0\qquad (k\geq 1).
+\]
+Thus $n_k\neq 9$ for infinitely many $k$, while $n_k\neq m_k$ for every
+$k\geq 1$, contradicting the stated conclusion.
+
+\begin{lemma}
+\label{lemma:1.4.2.d.1}
+
+    For every $k$,
+    \[
+        \sum_{i=0}^{k} m_i 10^{-i} + 10^{-k} > x.
+    \]
+\end{lemma}
+
+\begin{proof}
+	Suppose that
+	\[
+		\sum_{i=0}^{s} m_i 10^{-i} + 10^{-s} \leq x
+	 \]
+	for some $s$.
+	Then, for any $t > s$,
+	\[ 
+		\sum_{i=0}^{s} m_i 10^{-i} + 10^{-s} - 10^{-t} < \sum_{i=0}^{s} m_i 10^{-i} + 10^{-s} \leq x.
+	 \]
+	Therefore, $\sum_{i=0}^{s} m_i 10^{-i} + 10^{-s} - 10^{-t}$ is not an upper bound of $\left\{ \sum_{i=0}^{k} m_i 10^{-i} \, \middle |\, k \ge 0 \right\}$.
+	It follows that there exists $e \in \left\{ \sum_{i=0}^{k} m_i 10^{-i} \, \middle |\, k \ge 0 \right\}$ such that
+	\[ 
+		e > \sum_{i=0}^{s} m_i 10^{-i} + 10^{-s} - 10^{-t} = \sum_{i=0}^{s} m_i 10^{-i} + \sum_{i=s+1}^{t} 9 \cdot 10^{-i}.
+	 \]
+	This implies that $m_k = 9$ for every $k$ such that $s < k \leq t$.
+		To see this, suppose that $m_j \neq 9$ for some $j \in \left(s, t\right]$,
+	Then
+	\[ 
+		\sum_{i=0}^{j} m_i 10^{-i} + 10^{-j} \leq \sum_{i=0}^{s} m_i 10^{-i} + \sum_{i=s+1}^{t} 9 \cdot 10^{-i} < e.
+	 \]
+	But $\sum_{i=0}^{j} m_i 10^{-i} + 10^{-j} \geq e$ by part (c).
+
+	Since $t > s$ can be chosen arbitrarily large, it follows that $m_k = 9$ for every $k > s$. Hence there are only finitely many $k$ such that $m_k \neq 9$, contradicting our hypothesis.
+\end{proof}
+
+Now we show by induction on $k$ that $n_k = m_k$ for all $k$.
+
+\begin{proof}
+	If $n_0 > m_0$, then
+	\[
+		n_0 \geq m_0 + 1 > x
+	\]
+	by Lemma \ref{lemma:1.4.2.d.1}.
+	If $n_0 < m_0$, then $n_0$ is not the largest integer satisfying $n_0 \leq x$.
+	Both cases contradict our choice of $n_0$. Therefore, $n_0 = m_0$.
+
+	Now assume that $n_k = m_k$ for all $k < j$.
+	If $n_j > m_j$, then
+	\[
+		\sum_{i=0}^{j} n_i 10^{-i}
+		\geq
+		\sum_{i=0}^{j} m_i 10^{-i} + 10^{-j}
+		> x
+	\]
+	by Lemma \ref{lemma:1.4.2.d.1}.
+	If $n_j < m_j$, then $n_j$ is not the largest integer satisfying
+	\[
+		\sum_{i=0}^{j} n_i 10^{-i} \leq x.
+	\]
+	Both cases contradict our choice of $n_j$. Therefore, $n_j = m_j$.
+
+	Hence, by induction, $n_k = m_k$ for all $k$.
+\end{proof}
+
+
+\end{document}
