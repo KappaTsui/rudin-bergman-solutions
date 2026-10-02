@@ -1,0 +1,155 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{document}
+% Exercise 1.4:3(a)
+
+\begin{lemma}
+	\label{lemma:1.4.3.a.1}
+	For every integer $n$,
+	\[
+		(n + 1)_F = n_F + 1_F.
+	\]
+\end{lemma}
+
+\begin{proof}
+	When $n \geq 1$, the lemma follows directly from the definition.
+
+	When $n = 0$, we have
+	\[
+		(n + 1)_F = 1_F = 0_F + 1_F = n_F + 1_F.
+	\]
+
+	When $n = -1$, we have
+	\[
+		(n + 1)_F = 0_F = (-1)_F + 1_F = n_F + 1_F.
+	\]
+
+	When $n \leq -2$, we have
+	\[
+		(n + 1)_F
+		= -(-n - 1)_F
+		= -[(-n)_F - 1_F]
+		= -(-n)_F + 1_F
+		= n_F + 1_F.
+	\]
+\end{proof}
+
+Next, we prove the addition part of the proposition in the exercise.
+
+\begin{proof}
+	If $n$ is nonnegative, we prove that
+	\[
+		(m + n)_F = m_F + n_F
+	\]
+	by induction on $n$.
+
+	If $n = 0$, then
+	\[
+		(m + n)_F
+		= (m + 0)_F
+		= m_F
+		= m_F + 0_F
+		= m_F + n_F.
+	\]
+
+	Suppose that $(m + n)_F = m_F + n_F$ holds for all $n < j$.
+	Then, for $n = j$,
+	\[
+		\begin{aligned}
+		m_F + n_F
+		&= m_F + ((j - 1) + 1)_F \\
+		&= m_F + (j - 1)_F + 1_F \\
+		&= (m + j - 1)_F + 1_F \\
+		&= (m + j)_F \\
+		&= (m + n)_F.
+		\end{aligned}
+	\]
+	Notice that
+	\[
+		(m + j - 1)_F + 1_F = (m + j)_F
+	\]
+	and
+	\[
+		((j - 1) + 1)_F = (j - 1)_F + 1_F
+	\]
+	follow from Lemma \ref{lemma:1.4.3.a.1}.
+
+	If $n$ is negative, we prove that
+	\[
+		(m + n)_F = m_F + n_F
+	\]
+	by induction on $n$.
+
+	If $n = -1$, then Lemma \ref{lemma:1.4.3.a.1} gives
+	\[
+		m_F = (m - 1)_F + 1_F,
+	\]
+	and hence
+	\[
+		m_F - 1_F = (m - 1)_F.
+	\]
+	Therefore,
+	\[
+		m_F + n_F = (m + n)_F.
+	\]
+
+	Suppose that $(m + n)_F = m_F + n_F$ holds for all $n > j$.
+	Then, for $n = j$,
+	\[
+		\begin{aligned}
+		m_F + n_F
+		&= m_F + ((j + 1) - 1)_F \\
+		&= m_F + (j + 1)_F - 1_F \\
+		&= (m + j + 1)_F - 1_F \\
+		&= (m + j)_F.
+		\end{aligned}
+	\]
+	Notice that
+	\[
+		((j + 1) - 1)_F = (j + 1)_F - 1_F
+	\]
+	and
+	\[
+		(m + j + 1)_F - 1_F = (m + j)_F
+	\]
+	follow from Lemma \ref{lemma:1.4.3.a.1}.
+\end{proof}
+
+Now we turn to the multiplication part.
+
+\begin{proof}
+	If $n$ is positive, then
+	\[
+		m_F n_F
+		=
+		m_F
+		\left(
+			\underbrace{1 + 1 + \cdots + 1}_{n \text{ times}}
+		\right)_F
+		=
+		\underbrace{m_F + m_F + \cdots + m_F}_{n \text{ times}}
+		=
+		(mn)_F.
+	\]
+
+	If $n$ is negative, then
+	\[
+		m_F n_F
+		=
+		m_F
+		\left(
+			\underbrace{-1 - 1 - \cdots - 1}_{-n \text{ times}}
+		\right)_F
+		=
+		\underbrace{(-m_F) + (-m_F) + \cdots + (-m_F)}_{-n \text{ times}}
+		=
+		(mn)_F.
+	\]
+
+	If $n = 0$, then
+	\[
+		m_F n_F = m_F 0_F = 0_F = (mn)_F.
+	\]
+\end{proof}
+
+\end{document}
