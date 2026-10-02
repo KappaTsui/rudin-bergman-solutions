@@ -1,0 +1,36 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{document}
+% Exercise 1.4:3(b)
+
+\begin{proof}
+	Suppose that $m < n$.
+	Then $n - m$ is positive.
+	by part (a),
+	\[ 
+		n_F - m_F = (n - m)_F = (\underbrace{1 + 1 + \ldots + 1}_{n - m \text{ times}})_F = \underbrace{1_F + 1_F + \ldots + 1_F}_{n - m \text{ times}}.
+	 \]
+	Since $1_F > 0_F$ by Rudin's proposition 1.18(d),
+	it follows that $n_F - m_F$ is positive, Hence $m_F < n_F$.
+
+	Conversely, suppose that $m_F < n_F$.
+	Then $0 < n_F - m_F$.
+	We first observe that $n - m \neq 0$, since $n - m = 0$ would imply
+	\[ 
+		n_F - m_F = (n - m)_F = 0_F,
+	 \]
+	a contradiction.
+	Moreover, $n - m$ cannot be negative. Indeed, if $n - m < 0$, then
+	\[ 
+		n_F - m_F = (n - m)_F = -(m - n)_F,
+	 \]
+	where $(m - n)_F$ is positive. Thus $n_F - m_F$ would be negative by Rudin's proposition 1.18(a), again a contradiction.
+	Therefore, $n - m > 0$, and hence $m < n$.
+
+	Finally, suppose that $n \neq m$. Without loss of generality, assume that $n < m$.
+	By what we have just shown, $n_F < m_F$ and therefore $n_F \neq m_F$.
+	Hence the map $n \mapsto n_F$ is one-to-one.
+
+\end{proof}
+
+\end{document}
