@@ -1,0 +1,112 @@
+\documentclass[../../../main.tex]{subfiles}
+
+\begin{document}
+% Exercise 1.4:3(c)
+
+Well-definedness.
+
+\begin{proof}
+	Fix $r \in Q$. Suppose that $m, n, m', n'$ satisfy
+	\[
+		\frac{m}{n} = \frac{m'}{n'} = r.
+	\]
+	Then $mn' = m'n$. By part (a),
+	\[
+		m_F n'_F = (mn')_F = (m'n)_F = m'_F n_F.
+	\]
+	By part (b), $n_F \neq 0_F$ and $n'_F \neq 0_F$. Therefore, we may divide by
+	$n_F n'_F$ to obtain
+	\[
+		\frac{m_F}{n_F} = \frac{m'_F}{n'_F}.
+	\]
+	Hence the definition of $r_F$ is independent of the choice of representation of $r$.
+\end{proof}
+
+Respects addition.
+
+\begin{proof}
+	Fix $r$ and $s$. Choose $m, n, p, q$ such that
+	\[
+		\frac{m}{n} = r
+		\qquad\text{and}\qquad
+		\frac{p}{q} = s.
+	\]
+	Then
+	\[
+		\begin{aligned}
+		r_F + s_F
+		&= \frac{m_F}{n_F} + \frac{p_F}{q_F} \\
+		&= \frac{m_F q_F}{n_F q_F} + \frac{p_F n_F}{q_F n_F} \\
+		&= \frac{m_F q_F + p_F n_F}{n_F q_F} \\
+		&= \frac{(mq + np)_F}{(nq)_F} \\
+		&= (r + s)_F.
+		\end{aligned}
+	\]
+\end{proof}
+
+Respects multiplication.
+
+\begin{proof}
+	Fix $r$ and $s$. Choose $m, n, p, q$ such that
+	\[
+		\frac{m}{n} = r
+		\qquad\text{and}\qquad
+		\frac{p}{q} = s.
+	\]
+	Then
+	\[
+		\begin{aligned}
+		r_F s_F
+		&= \frac{m_F}{n_F}\frac{p_F}{q_F} \\
+		&= \frac{m_F p_F}{n_F q_F} \\
+		&= \frac{(mp)_F}{(nq)_F} \\
+		&= (rs)_F.
+		\end{aligned}
+	\]
+\end{proof}
+
+Preserves order.
+
+\begin{proof}
+	Fix $r$ and $s$.
+
+	Suppose first that $r < s$. Then $0 < s - r$. We may write $s - r$ in the form
+	\[
+		s - r = mn^{-1},
+	\]
+	where both $m$ and $n$ are positive. Hence
+	\[
+		s_F - r_F
+		= (s - r)_F
+		= (mn^{-1})_F
+		= m_F n^{-1}_F.
+	\]
+	By part (b), $m_F$ and $n_F$ are positive. Moreover, by Rudin's
+	Proposition 1.18(e), $n^{-1}_F > 0_F$. Therefore,
+	\[
+		s_F - r_F = m_F n^{-1}_F > 0_F,
+	\]
+	and hence $r_F < s_F$.
+
+	Conversely, suppose that $r_F < s_F$. We show that $r < s$ by ruling out
+	the other two possibilities. If $r = s$, then $r_F = s_F$, a contradiction.
+	If $r > s$, then, by what we have just shown, $r_F > s_F$, again a
+	contradiction. Therefore, $r < s$.
+\end{proof}
+
+One-to-one.
+
+\begin{proof}
+	Suppose that $r \neq s$. Then either $r < s$ or $s < r$. Since the map
+	preserves order, either
+	\[
+		r_F < s_F
+	\]
+	or
+	\[
+		s_F < r_F.
+	\]
+	In either case, $r_F \neq s_F$. Therefore, the map is one-to-one.
+\end{proof}
+
+\end{document}
